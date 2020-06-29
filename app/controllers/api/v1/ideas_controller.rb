@@ -15,6 +15,9 @@ module Api::V1
 			@idea.update_attributes(idea_params)
 			render json: @idea
 		end
+		def show
+			render json: @ideas
+		end
 
 		private
 		def idea_params
