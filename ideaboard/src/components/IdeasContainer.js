@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Idea from './Idea';
 import update from 'immutability-helper';
+import IdeaForm from './IdeaForm';
 
 class IdeasContainer extends Component {
 	constructor(props) {
@@ -53,7 +54,13 @@ class IdeasContainer extends Component {
 					New Idea
         </button>
 
-				{this.state.ideas.map((idea) => (<Idea idea={idea} key={idea.id} />))}
+				{this.state.ideas.map((idea) => {
+					if (this.state.editingIdeaId === idea.id) {
+						return (<IdeaForm idea={idea} key={idea.id } />)
+					} else {
+						return (<Idea idea={idea} key={idea.id} />)
+					}
+				})}
 			</div>
 
 		);
